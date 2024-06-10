@@ -34,7 +34,8 @@ st.dataframe(data.head())
 
 # Feature Correlation Visualization
 st.subheader("Feature Correlation")
-selected_features = st.multiselect("Select features to visualize correlation", data.columns, default=data.columns.tolist())
+visualize_required = 'Gender', 'Married', 'Dependents', 'Education', 'Self_Employed', 'Credit_History', 'Property_Area'
+selected_features = st.multiselect("Select features to visualize correlation", data.columns, default=visualize_required)
 if selected_features:
     fig, ax = plt.subplots()
     sns.heatmap(data[selected_features].corr(), annot=True, cmap='coolwarm', ax=ax)
