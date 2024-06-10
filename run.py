@@ -36,13 +36,17 @@ st.dataframe(data.head())
 st.subheader("Feature Correlation")
 visualize_required = 'Gender', 'Married', 'Dependents', 'Education', 'Self_Employed', 'Credit_History', 'Property_Area'
 selected_features = st.multiselect("Select features to visualize correlation", data.columns, default=visualize_required)
-if selected_features:
-    fig, ax = plt.subplots()
-    sns.heatmap(data[selected_features].corr(), annot=True, cmap='coolwarm', ax=ax)
-    st.pyplot(fig)
+if st.button("Predict"):
+    user_input_tensor = convert_to_tensor_input(user_input_df)
+    prediction = model.predict(user_input_tensor)
+    st.write(f"Prediction: {prediction[0]}")
 
-st.subheader("Feature Distribution")
-selected_feature = st.selectbox("Select feature to visualize", data.columns)
-fig, ax = plt.subplots()
-ax.hist(data[selected_feature].dropna(), bins=30)
-st.pyplot(fig)
+# Visualize Predictions
+st.title("Prediction Visualization")
+st.write("Visualizing the predictions made by the model")
+
+# Ensure prediction is only accessed if it is set
+if prediction is not None:
+    fig, ax = plt.subplots()
+    ax.bar(['Prediction'], [prediction[0]])
+    st.pyplot(fig)
