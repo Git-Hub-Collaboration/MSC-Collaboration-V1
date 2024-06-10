@@ -13,6 +13,7 @@ data = pd.read_csv(data_path)
 
 model_path = 'nn_model.h5'
 model = load_model(model_path)
+
 # Data Preprocessing Function
 def preprocess_data(data, label_encoder):
     categorical_columns = ['Gender', 'Married', 'Dependents', 'Education', 'Self_Employed', 'Credit_History', 'Property_Area']
