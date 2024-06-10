@@ -8,7 +8,7 @@ from sklearn.preprocessing import LabelEncoder
 from tensorflow.keras.models import load_model
 
 # Load the cleaned data
-data_path = 'transformed.csv'
+data_path = 'training_data.csv'
 data = pd.read_csv(data_path)
 
 model_path = 'nn_model.h5'
