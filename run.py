@@ -30,3 +30,18 @@ st.title("Loan Prediction  Analysis")
 st.write("Visualizing the cleaned data used to train the model")
 
 st.dataframe(data.head())
+
+# Feature Correlation Visualization
+st.subheader("Feature Correlation")
+visualize_required = 'Gender', 'Married', 'Dependents', 'Education', 'Self_Employed', 'Credit_History', 'Property_Area'
+selected_features = st.multiselect("Select features to visualize correlation", data.columns, default=visualize_required)
+if selected_features:
+    fig, ax = plt.subplots()
+    sns.heatmap(data[selected_features].corr(), annot=True, cmap='coolwarm', ax=ax)
+    st.pyplot(fig)
+
+st.subheader("Feature Distribution")
+selected_feature = st.selectbox("Select feature to visualize", data.columns)
+fig, ax = plt.subplots()
+ax.hist(data[selected_feature].dropna(), bins=30)
+st.pyplot(fig)
