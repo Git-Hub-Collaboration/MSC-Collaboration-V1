@@ -54,6 +54,25 @@
 - Edna
 ```
 
-## Website Endpoints:
-How to run the application
+#### Website Endpoints:
+##### Create a virtual environment:
+```
+python3 -m venv venv
+```
+##### Activate the virtual environment
+```
+source venv/bin/activate
+```
+##### Install the required requirements
+```
+pip install -r requirements.txt
+```
+##### How to run the application
+```
 streamlit run app.py
+```
+
+##### Hosted on an open streamlit service
+https://msc-collaboration-loan-prediction.streamlit.app/
+
+
